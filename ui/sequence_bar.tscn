@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv3v0l1gba5sw"]
+
+[ext_resource type="Script" uid="uid://slr157kqn21j" path="res://ui/sequence_bar.gd" id="1_ekwak"]
+
+[node name="SequenceBar" type="HBoxContainer"]
+offset_bottom = 357.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+script = ExtResource("1_ekwak")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cguw5slt1eivr"]
+
+[ext_resource type="Script" uid="uid://c887pkyhghi37" path="res://ui/editor_bar.gd" id="1_ul5h5"]
+
+[node name="EditorBar" type="HBoxContainer"]
+offset_bottom = 357.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+script = ExtResource("1_ul5h5")

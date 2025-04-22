@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg6n105c48ihy"]
+
+[ext_resource type="Script" uid="uid://ddihjr87vwlcc" path="res://main.gd" id="1_7mycd"]
+[ext_resource type="PackedScene" uid="uid://6b8np1jscvhu" path="res://map.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://t8dpx5omwib7" path="res://managers/tower_manager.gd" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dmjexnv25vlq6" path="res://towers/tower.tscn" id="3_5vw27"]
+[ext_resource type="Script" uid="uid://bmfeefgcs8s1l" path="res://managers/wave_manager.gd" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://m34ugk1gh3jx" path="res://managers/ui_manager.gd" id="4_7mycd"]
+[ext_resource type="Texture2D" uid="uid://1u3noa6kmhvn" path="res://wildcards.png" id="7_272bh"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_7mycd")
+
+[node name="TowerManager" type="Node" parent="."]
+script = ExtResource("2_1bvp3")
+
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource("3_lquwl")
+
+[node name="UIManager" type="Node" parent="."]
+script = ExtResource("4_7mycd")
+
+[node name="SequenceBars" type="VBoxContainer" parent="UIManager"]
+offset_left = -189.0
+offset_top = -329.0
+offset_right = 189.0
+offset_bottom = -229.0
+
+[node name="SequenceEditorToggle" type="Control" parent="UIManager"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -130.0
+offset_top = -352.0
+offset_right = 131.0
+offset_bottom = -199.0
+
+[node name="SequenceEditor" type="VBoxContainer" parent="UIManager"]
+visible = false
+z_index = 20
+offset_left = -370.0
+offset_top = -166.0
+offset_right = 370.0
+offset_bottom = 234.0
+mouse_filter = 0
+
+[node name="IntroCard" type="ColorRect" parent="UIManager"]
+visible = false
+offset_left = -730.0
+offset_top = -419.0
+offset_right = 733.0
+offset_bottom = 416.0
+color = Color(0.364706, 0.145098, 0.462745, 1)
+
+[node name="Wildcards" type="Sprite2D" parent="UIManager"]
+visible = false
+scale = Vector2(0.214286, 0.214286)
+texture = ExtResource("7_272bh")
+
+[node name="Map" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(-62, 0)
+
+[node name="MelodyTower" parent="." instance=ExtResource("3_5vw27")]
+position = Vector2(-485, -107)
+color = Color(0.235294, 1, 0.964706, 1)
+selected_subdivision = "eighth"
+
+[node name="HarmonyTower" parent="." instance=ExtResource("3_5vw27")]
+visible = false
+position = Vector2(-485, -15)
+color = Color(0.694118, 0.239216, 1, 1)
+tower_type = "harmony"
+
+[node name="RhythmTower" parent="." instance=ExtResource("3_5vw27")]
+visible = false
+position = Vector2(-485, 77)
+color = Color(0.596078, 1, 0.239216, 1)
+tower_type = "rhythm"
+selected_subdivision = "quarter"
+
+[node name="BassTower" parent="." instance=ExtResource("3_5vw27")]
+visible = false
+position = Vector2(-485, 169)
+color = Color(0.504, 0.04, 1, 1)
+tower_type = "bass"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)

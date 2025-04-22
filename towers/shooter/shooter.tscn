@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdgof742hccwx"]
+
+[ext_resource type="Script" uid="uid://ef1t3h7gy00c" path="res://towers/shooter/shooter.gd" id="1_gawxn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds28n"]
+size = Vector2(1250, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3o4ch"]
+size = Vector2(24, 28)
+
+[node name="Shooter" type="Node2D" groups=["shooter"]]
+script = ExtResource("1_gawxn")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(0, 4)
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(-3, 2.5, -3, -4.5, 3, -4.5, 3, 2.5)
+
+[node name="VisionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea"]
+position = Vector2(615, 0)
+shape = SubResource("RectangleShape2D_ds28n")
+
+[node name="Player" type="AudioStreamPlayer" parent="."]
+
+[node name="ShooterBody" type="Area2D" parent="." groups=["shooter"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShooterBody"]
+shape = SubResource("RectangleShape2D_3o4ch")

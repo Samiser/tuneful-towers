@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://86xcto0w26bv"]
+
+[ext_resource type="Script" uid="uid://bqeo8a3nfqgsj" path="res://enemies/enemy/enemy.gd" id="1_tni88"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31uix"]
+bg_color = Color(0.3, 0.3, 0.3, 0.247059)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clkm6"]
+bg_color = Color(0.98, 0.1176, 0.131973, 1)
+
+[sub_resource type="Theme" id="Theme_clkm6"]
+/colors/red = Color(0.92, 0, 0.0153331, 1)
+ProgressBar/styles/background = SubResource("StyleBoxFlat_31uix")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_clkm6")
+
+[node name="Enemy" type="Node2D" groups=["enemy"]]
+script = ExtResource("1_tni88")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0.24524, 0.187846, 1)
+polygon = PackedVector2Array(-12, 0, 0, -26, 12, 0, 0, 25)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-12, 0, 0, -26, 12, 0, 0, 25)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -21.0
+offset_top = -33.0
+offset_right = 21.0
+offset_bottom = -27.0
+theme = SubResource("Theme_clkm6")
+step = 1.0
+value = 20.0
+show_percentage = false
+
+[node name="HitParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 3
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.68
+spread = 180.0
+initial_velocity_min = 156.07
+initial_velocity_max = 156.07
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+color = Color(0.91417, 0.00014343, 0.758486, 1)
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 1.0
+spread = 180.0
+initial_velocity_min = 156.07
+initial_velocity_max = 156.07
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+color = Color(0.913725, 0, 0.756863, 1)
